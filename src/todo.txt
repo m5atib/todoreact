@@ -7,6 +7,7 @@ A. [] See existing todos.
     * dumbData to test
     
 B. [] Add a new todo to the list.
+    * inputs [title,desc,addbutton]
 C. [] Search through the todos.
 D. [] Mark todo as done.
 E. [] A toggle to show/hide todos.
