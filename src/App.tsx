@@ -30,20 +30,31 @@ function App() {
     if (text.trim() != "") {
       setSearchMyTodos(
         myTodos.filter(
-          (item) => item.title.toLowerCase().indexOf(text.trim().toLowerCase()) > -1
+          (item) =>
+            item.title.toLowerCase().indexOf(text.trim().toLowerCase()) > -1
         )
       );
     } else {
       setSearchMyTodos(myTodos);
     }
   };
-  useEffect(()=> setSearchMyTodos(myTodos),[myTodos])
+  const markAsDoneHandler = (todoId: string) => {
+    let newMarked = myTodos.map((item) => {
+      return {
+        ...item,
+        done: item.id === todoId || item.done,
+      };
+    });
+    setSearchMyTodos(newMarked);
+    setMyTodos(newMarked);
+  };
+  useEffect(() => setSearchMyTodos(myTodos), [myTodos]);
   return (
     <div className="dark:bg-slate-700 relative flex md:flex-row flex-wrap flex-col justify-between md:gap-16 gap-8 divide-slate-100">
       <AddNewTodo addNewHandler={handleSubmit} />
       <div className="z-40 dark:bg-slate-700 flex-1 flex flex-col items-center gap-4 md:p-16 py-16 px-4">
         <Searchbar searchHandler={searchHandler} />
-        <TodoList Todos={searchMyTodos} />
+        <TodoList Todos={searchMyTodos} markHandler={markAsDoneHandler} />
       </div>
     </div>
   );

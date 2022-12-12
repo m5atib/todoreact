@@ -8,9 +8,12 @@ export type TodoCardData = {
   done: boolean;
 };
 
-type TodoCardProps = { Data: TodoCardData };
+type TodoCardProps = {
+  Data: TodoCardData;
+  MarkAsDone: (todoId: string) => void;
+};
 
-const TodoCard = ({ Data }: TodoCardProps) => {
+const TodoCard = ({ Data, MarkAsDone }: TodoCardProps) => {
   const shadow = Data.done === true ? "" : "shadow-2xl";
 
   return (
@@ -36,12 +39,16 @@ const TodoCard = ({ Data }: TodoCardProps) => {
         <button className="px-4 p-2 rounded bg-white dark:bg-slate-500 text-slate-500 dark:text-white hover:text-red-500">
           <i className="text-xl fa-solid fa-trash"></i>
         </button>
-        {Data.done === false ? (
-          <button className="px-4 p-2 rounded dark:bg-slate-500 dark:text-white bg-white text-slate-500 hover:text-green-500">
+        {Data.done === false && (
+          <button
+            onClick={(e) => {
+              MarkAsDone(Data.id);
+              Data.done = true;
+            }}
+            className="px-4 p-2 rounded dark:bg-slate-500 dark:text-white bg-white text-slate-500 hover:text-green-500"
+          >
             <i className="text-xl fa-solid fa-circle-check"></i>
           </button>
-        ) : (
-          ""
         )}
       </div>
     </li>
