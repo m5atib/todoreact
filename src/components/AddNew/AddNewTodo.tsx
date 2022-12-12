@@ -29,6 +29,7 @@ const AddNewTodo = ({addNewHandler} :AddNewProps) => {
           name="title"
           id="taskTitle"
           placeholder="What is your next task title?"
+          required
         />
         <textarea
           id="taskDesc"
