@@ -5,9 +5,16 @@ import { TodoCardData } from "./components/Todos/TodoCard";
 import TodoList from "./components/Todos/TodoList";
 import { useEffect, useState } from "react";
 import Searchbar from "./components/Todos/Searchbar";
+import Footer from "./components/Footer/Footer";
 function App() {
   const [myTodos, setMyTodos] = useState<TodoCardData[]>([]);
   const [searchMyTodos, setSearchMyTodos] = useState<TodoCardData[]>([]);
+
+  const [status, setStatus] = useState({
+    counter: 0,
+    doneCounter: 0,
+    remCounter: 0,
+  });
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     const formData = new FormData(event.currentTarget);
     event.preventDefault();
@@ -39,7 +46,9 @@ function App() {
     }
   };
   const markAsDoneHandler = (todoId: string) => {
+    let done = 0;
     let newMarked = myTodos.map((item) => {
+      (item.id === todoId || item.done) && done++;
       return {
         ...item,
         done: item.id === todoId || item.done,
@@ -47,8 +56,22 @@ function App() {
     });
     setSearchMyTodos(newMarked);
     setMyTodos(newMarked);
+    setStatus({
+      counter: newMarked.length,
+      doneCounter: done,
+      remCounter: newMarked.length - done,
+    });
   };
-  useEffect(() => setSearchMyTodos(myTodos), [myTodos]);
+  useEffect(() => {
+    setSearchMyTodos(myTodos);
+    setStatus((pre) => {
+      return {
+        counter: myTodos.length,
+        doneCounter: pre.doneCounter,
+        remCounter: myTodos.length - pre.doneCounter,
+      };
+    });
+  }, [myTodos]);
   return (
     <div className="dark:bg-slate-700 relative flex md:flex-row flex-wrap flex-col justify-between md:gap-16 gap-8 divide-slate-100">
       <AddNewTodo addNewHandler={handleSubmit} />
@@ -56,6 +79,7 @@ function App() {
         <Searchbar searchHandler={searchHandler} />
         <TodoList Todos={searchMyTodos} markHandler={markAsDoneHandler} />
       </div>
+      <Footer Status={status} />
     </div>
   );
 }

@@ -9,7 +9,7 @@ const AddNewTodo = ({addNewHandler} :AddNewProps) => {
   return (
     <div className="relative dark:bg-slate-800 flex md:h-screen md:p-16 py-16 px-4 bg-slate-100 flex-col items-center gap-8">
       <a
-        href="https://github.com/m5atib/todo-list"
+        href="https://github.com/m5atib/todoreact"
         target="_blank"
         className="absolute left-4 top-4 md:bottom-4"
       >
