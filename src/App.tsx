@@ -1,6 +1,6 @@
 import "./App.css";
 import AddNewTodo from "./components/AddNew/AddNewTodo";
-import { FakeTodo } from "./components/Todos/dummyData";
+
 import { TodoCardData } from "./components/Todos/TodoCard";
 import TodoList from "./components/Todos/TodoList";
 import { useEffect, useState } from "react";
@@ -29,12 +29,12 @@ function App() {
     todoObj["createdDate"] = new Date().toLocaleString();
     todoObj["done"] = false;
 
-    if (todoObj.title == "") return;
+    if (todoObj.title === "") return;
     setMyTodos((pre) => [...pre, todoObj]);
   };
 
   const searchHandler = (text: string) => {
-    if (text.trim() != "") {
+    if (text.trim() !== "") {
       setSearchMyTodos(
         myTodos.filter(
           (item) =>

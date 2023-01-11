@@ -1,4 +1,3 @@
-import { useState } from "react";
 
 type SearchbarProps = {
   searchHandler: (text: string) => void;

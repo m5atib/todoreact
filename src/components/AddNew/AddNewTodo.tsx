@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 
 type AddNewProps = { 
     addNewHandler : React.FormEventHandler<HTMLFormElement>
@@ -11,7 +11,7 @@ const AddNewTodo = ({addNewHandler} :AddNewProps) => {
       <a
         href="https://github.com/m5atib/todoreact"
         target="_blank"
-        className="absolute left-4 top-4 md:bottom-4"
+        className="absolute left-4 top-4 md:bottom-4" rel="noreferrer"
       >
         <i className="text-xl fa-brands fa-github dark:text-white"></i>
       </a>

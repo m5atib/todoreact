@@ -20,7 +20,7 @@ const TodoCard = ({ Data, MarkAsDone }: TodoCardProps) => {
     <li
       className={
         shadow +
-        "p-2 bg-slate-500 rounded-lg flex flex-row w-full shadow-slate-300  bg-slate-50 dark:bg-slate-800 dark:border-slate-600  items-stretch justify-between p-4 rounded-lg hover:outline-sky-300 light:hover:outline"
+        "p-2 bg-slate-50 rounded-lg flex flex-row w-full shadow-slate-300  bg-slate-50 dark:bg-slate-800 dark:border-slate-600  items-stretch justify-between p-4 rounded-lg hover:outline-sky-300 light:hover:outline"
       }
     >
       <div className="h-full flex flex-col justify-between max-w-2xl gap-1">
