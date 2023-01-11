@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Searchbar from "./Searchbar";
 import TodoCard, { TodoCardData } from "./TodoCard";
 
 type CardListProps = {

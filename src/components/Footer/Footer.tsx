@@ -13,13 +13,13 @@ const Footer = ({Status}:FooterProps) => {
         <h1 className="text-2xl font-bold text-sky-700 dark:text-sky-300">Your To-Do List</h1>
         <div className="flex flex-row gap-2 items-center">
           <abbr className="p-2 rounded bg-white dark:bg-slate-400" title="Tasks Number">
-            <i className="fa-solid fa-hashtag"></i> <span id="tasksnumber">{Status.counter}</span>
+            <i className="fa-solid fa-hashtag"></i> <span data-testid="alltasks" id="tasksnumber">{Status.counter}</span>
           </abbr>
           <abbr className="p-2 rounded bg-orange-100 dark:bg-orange-400" title="Active Tasks">
-            <i className="fa-regular fa-clock"></i> <span id="activenumber">{Status.remCounter}</span>
+            <i className="fa-regular fa-clock"></i> <span data-testid="remtasks" id="activenumber">{Status.remCounter}</span>
           </abbr>
           <abbr className="p-2 rounded bg-green-100 dark:bg-green-400" title="Completed Tasks">
-            <i className="fa-solid fa-check"></i> <span id="donenumber">{Status.doneCounter}</span>
+            <i className="fa-solid fa-check"></i> <span data-testid="completedtasks" id="donenumber">{Status.doneCounter}</span>
           </abbr>
         </div>
       </div>

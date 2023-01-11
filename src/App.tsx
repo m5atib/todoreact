@@ -1,6 +1,6 @@
 import "./App.css";
 import AddNewTodo from "./components/AddNew/AddNewTodo";
-import { FakeTodo } from "./components/Todos/dummyData";
+
 import { TodoCardData } from "./components/Todos/TodoCard";
 import TodoList from "./components/Todos/TodoList";
 import { useEffect, useState } from "react";
@@ -18,6 +18,7 @@ function App() {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     const formData = new FormData(event.currentTarget);
     event.preventDefault();
+    //this should has mocked implementation in order to test it 
     const pairs = Array.from(formData.entries());
 
     let todoObj: any = {};
@@ -29,12 +30,12 @@ function App() {
     todoObj["createdDate"] = new Date().toLocaleString();
     todoObj["done"] = false;
 
-    if (todoObj.title == "") return;
+    if (todoObj.title === "") return;
     setMyTodos((pre) => [...pre, todoObj]);
   };
 
   const searchHandler = (text: string) => {
-    if (text.trim() != "") {
+    if (text.trim() !== "") {
       setSearchMyTodos(
         myTodos.filter(
           (item) =>
