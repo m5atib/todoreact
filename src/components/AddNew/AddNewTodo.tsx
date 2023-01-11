@@ -20,6 +20,7 @@ const AddNewTodo = ({addNewHandler} :AddNewProps) => {
       </button>
       <h1 className="text-xl font-bold dark:text-white">New Todo</h1>
       <form
+      data-testid='formy'
         className="flex flex-col items-center justify-between gap-2"
         onSubmit={addNewHandler}
       >

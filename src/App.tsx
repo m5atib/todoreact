@@ -18,6 +18,7 @@ function App() {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     const formData = new FormData(event.currentTarget);
     event.preventDefault();
+    //this should has mocked implementation in order to test it 
     const pairs = Array.from(formData.entries());
 
     let todoObj: any = {};
